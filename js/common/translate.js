@@ -229,6 +229,9 @@ export var translates = {
     customTTL: {
         "": "Custom TTL",
     },
+    debug: {
+        "": "Log level",
+    },
     desyncSettings: {
         "": "Desync",
     },

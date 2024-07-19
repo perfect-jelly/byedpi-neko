@@ -41,6 +41,8 @@ class ciadpiClass {
         this.defaultSharedStorage.excludeTrigger = ""
         this.defaultSharedStorage.excludeTriggerCanc = false
         this.defaultSharedStorage.timeout = ""
+        
+        this.defaultSharedStorage.debug = ""
 
         for (var k in this.defaultSharedStorage) {
             let v = this.defaultSharedStorage[k]
@@ -92,6 +94,15 @@ class ciadpiClass {
                         "key": "customTTL",
                         "icon": "ic_baseline_compare_arrows_24",
                         "EditTextPreferenceModifiers": "Port",
+                    },
+                    {
+                        "type": "SimpleMenuPreference",
+                        "key": "debug",
+                        "entries": {
+                            "0": "error",
+                            "1": "debug",
+                            "2": "verbose",
+                        },
                     },
                 ],
             },
@@ -257,7 +268,7 @@ class ciadpiClass {
         if (key == "desyncManual") {
             neko.setPreferenceVisibility("desyncCommand", newValue)
             
-            const keys = ["desyncMethod", "disableUDP", "disableIPv6",
+            const keys = ["desyncMethod", "disableUDP", "disableIPv6", "debug",
                 "customTTL", "desyncSplitPos", "desyncSplitSNI", "desyncSplitEnd",
                 "desyncFakeTTL", "desyncFakeData", "desyncOOBData", "desyncTLSRec",
                 "desyncTLSRecSNI",  "desyncHTTPCase", "desyncHTTPRmSpace",
@@ -287,6 +298,7 @@ class ciadpiClass {
             else {
                 if (ss.disableIPv6) cmd.push("--no-ipv6")
                 if (ss.disableUDP) cmd.push("--no-udp")
+                if (ss.debug != "") cmd.push("--debug=" + ss.debug)
                 
                 if (ss.customTTL != "") {
                     cmd.push("--def-ttl=" + s.customTTL)
