@@ -247,6 +247,9 @@ export var translates = {
     desyncSplitSNI: {
         "": "Add SNI offset to position",
     },
+    desyncUDPFake: {
+		"": "UDP fakes",
+	},
     desyncFakeTTL: {
         "": "TTL of fake packets",
     },

@@ -28,6 +28,7 @@ class ciadpiClass {
         this.defaultSharedStorage.desyncSplitSNI = false
         this.defaultSharedStorage.desyncSplitEnd = false
         
+        this.defaultSharedStorage.desyncUDPFake = "0"
         this.defaultSharedStorage.desyncFakeTTL = "5"
         this.defaultSharedStorage.desyncFakeData = ""
         this.defaultSharedStorage.desyncOOBData = ""
@@ -137,6 +138,12 @@ class ciadpiClass {
                         "type": "SwitchPreference",
                         "key": "desyncSplitSNI",
                         "icon": "ic_baseline_add_road_24",
+                    },
+                    {
+                        "type": "EditTextPreference",
+                        "key": "desyncUDPFake",
+                        "icon": "ic_maps_360",
+                        "EditTextPreferenceModifiers": "Port",
                     },
                     {
                         "type": "EditTextPreference",
@@ -270,8 +277,8 @@ class ciadpiClass {
             
             const keys = ["desyncMethod", "disableUDP", "disableIPv6", "debug",
                 "customTTL", "desyncSplitPos", "desyncSplitSNI", "desyncSplitEnd",
-                "desyncFakeTTL", "desyncFakeData", "desyncOOBData", "desyncTLSRec",
-                "desyncTLSRecSNI",  "desyncHTTPCase", "desyncHTTPRmSpace",
+                "desyncUDPFake", "desyncFakeTTL", "desyncFakeData", "desyncOOBData",
+                "desyncTLSRec", "desyncTLSRecSNI",  "desyncHTTPCase", "desyncHTTPRmSpace",
                 "excludeTrigger", "excludeTriggerCanc", "timeout"]
             for (const k of keys) {    
                 neko.setPreferenceVisibility(k, !newValue)
@@ -315,6 +322,9 @@ class ciadpiClass {
                     cmd.push("--" + ss.desyncMethod)
                     cmd.push((ss.desyncSplitEnd ? "-" : "") + (
                         ss.desyncSplitPos + (ss.desyncSplitSNI ? "+s" : "")))
+                }
+                if (ss.desyncUDPFake != "") {
+                    cmd.push("--udp-fake=" + ss.desyncUDPFake)
                 }
                 if (ss.desyncFakeTTL != "") {
                     cmd.push("--ttl=" + ss.desyncFakeTTL)
