@@ -248,8 +248,8 @@ export var translates = {
         "": "Add SNI offset to position",
     },
     desyncUDPFake: {
-		"": "UDP fakes",
-	},
+	"": "UDP fakes",
+    },
     desyncFakeTTL: {
         "": "TTL of fake packets",
     },
