@@ -12,10 +12,10 @@ https://github.com/MatsuriDayo/plugins/releases
 * npm (nodejs для Windows)
 * curl (для Linux)
 
-1. Перейдите в папку JS, установите модули:
+1. Перейдите в папку js, установите модули:
 
 ```
-   cd JS
+   cd js
    npm install
    cd ..
 ```
@@ -47,6 +47,6 @@ https://github.com/MatsuriDayo/plugins/releases
 6. Выберите Release
 7. Create
 
-APK появятся в /app_ciadpi/release/
+APK появятся в app_ciadpi/release/
 
 Т.к. подпись отличается, нужно будет удалить предыдущую версию плагина.
